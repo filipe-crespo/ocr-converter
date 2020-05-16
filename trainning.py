@@ -12,12 +12,12 @@ from keras.layers.convolutional import Conv2D,MaxPooling2D
 import pickle
 
 ############################################
-path = 'myData'
+path = 'my_data'
 testRatio = 0.2
 valRatio = 0.2
 imageDimensions = (32, 32, 3)
 batchSizeVal = 50
-epochsVal = 10
+epochsVal = 10 # 0-9 | A-Z, a-z, 0-9, ?!çÇ"'[]().,
 stepsPerEpoch = 2000
 ############################################
 images = []    # LIST CONTAINING ALL THE IMAGES
