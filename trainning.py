@@ -12,7 +12,7 @@ from keras.layers.convolutional import Conv2D,MaxPooling2D
 import pickle
 
 ############################################
-path = 'my_data'
+path = 'data'
 testRatio = 0.2
 valRatio = 0.2
 imageDimensions = (32, 32, 3)
@@ -31,7 +31,7 @@ print("Total Classes Detected", len(myList))
 noOfClasses = len(myList)
 
 print("Importing Classes .......")
-for x in range(0, noOfClasses):
+for x in myList:
     myPicList = os.listdir(path + "/" + str(x))
     for y in myPicList:
         curImg = cv2.imread(path + "/" + str(x) + "/" + str(y))
@@ -58,17 +58,17 @@ print(x_test.shape)
 print(x_validation.shape)
 
 #### PLOT BAR CHART FOR DISTRIBUTION OF IMAGES
-for x in range(0, noOfClasses):
-    #print(len(np.where(y_train==x)[0]))
+for x in myList:
+    print(len(np.where(y_train==x)[0]))
     numOfSamples.append(len(np.where(y_train == x)[0]))
 
 print(numOfSamples)
 
-plt.figure(figsize=(10, 5))
-plt.bar(range(0, noOfClasses), numOfSamples)
+plt.figure(figsize=(5, 10))
+plt.bar(numOfSamples, myList)
 plt.title("No of Images for each Class")
-plt.xlabel("Class ID")
-plt.ylabel("Number of Images")
+plt.xlabel("Number of Images")
+plt.ylabel("Class ID")
 plt.show()
 
 #### PREPOSSESSING FUNCTION FOR IMAGES FOR TRAINING

@@ -9,7 +9,7 @@ using python with Opencv , keras and sklearn.
 ## Install dependencies
 
 ```bash
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 ## Create dataset
