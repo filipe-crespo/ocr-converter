@@ -40,7 +40,7 @@ def make_font(font_name, count):
   for character in characters:
     if (character == '/'):
       folder = 'barra'
-    elif (character == '/'):
+    elif (character == '.'):
       folder = 'ponto'
     else:
       folder = character
