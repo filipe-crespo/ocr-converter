@@ -5,3 +5,4 @@ Pillow==7.0.0
 numpy==1.18.3
 opencv-python==4.2.0.34
 pickle5==0.0.9
+tensorflow==2.2.0

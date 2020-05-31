@@ -15,7 +15,7 @@ cap.set(3, width)
 cap.set(4, height)
 
 #### LOAD THE TRAINNED MODEL
-pickle_in = open("model_trained.p", "rb")
+pickle_in = open("models/model_trained.p", "rb")
 model = pickle.load(pickle_in)
 
 #### PREPORCESSING FUNCTION
@@ -37,13 +37,13 @@ def preProcessing(img):
 
 # while True:
 # success, imgOriginal = cap.read()
-imgOriginal = cv2.imread('test/oitenta.png')
+imgOriginal = cv2.imread('oito.jpeg')
 img = np.asarray(imgOriginal)
+img_size = cv2.resize(imgOriginal, (200, 200))
 img = cv2.resize(img, (32, 32))
 img = preProcessing(img)
 cv2.imshow("Processsed Image", img)
 img = img.reshape(1, 32, 32, 1)
-cv2.imshow("Processsed Image", img)
 
 #### PREDICT
 classIndex = int(model.predict_classes(img))
@@ -56,7 +56,7 @@ probVal = np.amax(predictions)
 print(classIndex, probVal)
 
 if probVal > threshold:
-    cv2.putText(imgOriginal,
+    cv2.putText(img_size,
                 str(classIndex) + "   " + str(probVal),
                 (50, 50),
                 cv2.FONT_HERSHEY_COMPLEX,
@@ -64,7 +64,7 @@ if probVal > threshold:
                 (0, 0, 255),
                 1)
 
-cv2.imshow("Original Image", imgOriginal)
+cv2.imshow("Original Image", img_size)
 cv2.waitKey(0)
     # if cv2.waitKey(1) & 0xFF == ord('q'):
         # break
