@@ -12,6 +12,12 @@ using python with Opencv , keras and sklearn.
 pip install requirements.txt
 ```
 
+## Create dataset
+
+```bash
+puthon3 create_data.py
+```
+
 ## Run tranning
 
 ```bash

@@ -115,28 +115,21 @@ def myModel():
     noOfNode = 500
 
     model = Sequential()
-    model.add((Conv2D(noOfFilters,
-                      sizeOfFilter1,
-                      input_shape=(imageDimensions[0],
-                                   imageDimensions[1],
-                                   1),
-                      activation='relu')))
+    model.add((Conv2D(noOfFilters,sizeOfFilter1,input_shape=(imageDimensions[0],imageDimensions[1],1),activation='relu')))
     model.add((Conv2D(noOfFilters, sizeOfFilter1, activation='relu')))
     model.add(MaxPooling2D(pool_size=sizeOfPool))
     model.add((Conv2D(noOfFilters//2, sizeOfFilter2, activation='relu')))
     model.add((Conv2D(noOfFilters//2, sizeOfFilter2, activation='relu')))
     model.add(MaxPooling2D(pool_size=sizeOfPool))
     model.add(Dropout(0.5))
-
     model.add(Flatten())
     model.add(Dense(noOfNode, activation='relu'))
     model.add(Dropout(0.5))
     model.add(Dense(noOfClasses, activation='softmax'))
+
     optimizer = Adam(lr=0.001)
 
-    model.compile(optimizer=optimizer,
-                  loss='categorical_crossentropy',
-                  metrics=['accuracy'])
+    model.compile(optimizer=optimizer,loss='categorical_crossentropy',metrics=['accuracy'])
 
     return model
 
